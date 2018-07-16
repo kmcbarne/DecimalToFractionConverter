@@ -1,0 +1,31 @@
+﻿<Window x:Class="FracDecConversion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FracDecConversion"
+        mc:Ignorable="d"
+        Title="Decimal → Fraction Converter">
+    <DockPanel>
+        <StatusBar x:Name="systemMessages" Height="25" DockPanel.Dock="Bottom">
+            <StatusBarItem x:Name="systemErrorMessages" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="Red" FontWeight="Bold" />
+        </StatusBar>
+        <Grid DockPanel.Dock="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Content="Decimal:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
+        <TextBox x:Name="decimalEntry" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="10" KeyDown="decimalEntry_KeyDown" HorizontalContentAlignment="Center" />
+        <Label Content="Fraction:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" />
+        <TextBox x:Name="fractionResult" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="10" IsEnabled="False" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+            <Button x:Name="convert" Grid.Column="1" Grid.Row="2" Content="Convert" VerticalAlignment="Center" HorizontalAlignment="Center" Click="convert_Click" Margin="10"/>
+        </Grid>
+    </DockPanel>
+</Window>
