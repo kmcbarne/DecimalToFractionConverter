@@ -16,8 +16,8 @@
             </GroupBox.Resources>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -27,12 +27,10 @@
                 </Grid.RowDefinitions>
                 <Label Content="Decimal:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" />
                 <TextBox x:Name="decimalEntry" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="10" HorizontalContentAlignment="Center" MinWidth="250" ToolTip="Calculates instantly." />
-                <!--KeyDown="decimalEntry_KeyDown"-->
                 <Label Content="Fraction:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" />
                 <TextBox x:Name="fractionResult" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="10" IsEnabled="True" FontWeight="Bold" HorizontalContentAlignment="Center"
                          Text="{Binding UpdateSourceTrigger=LostFocus, Path=Text, ElementName=decimalEntry, Converter={StaticResource fracConverter}}" ToolTip="Calculates when textbox loses focus." />
                 <CheckBox x:Name="mixedOff" Content="Simple fractions only" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Visibility="Collapsed"/>
-                <!--<Button x:Name="convertFraction" Grid.Column="1" Grid.Row="2" Content="Convert" VerticalAlignment="Center" HorizontalAlignment="Center" Click="convertFraction_Click" Margin="10"/>-->
             </Grid>
         </GroupBox>
         <GroupBox Header="Length" DockPanel.Dock="Top" Margin="3">
@@ -69,7 +67,6 @@
                         </MultiBinding>
                     </TextBox.Text>
                 </TextBox>
-                <!--<Button x:Name="convertLength" Grid.Column="1" Grid.Row="2" Content="Convert" VerticalAlignment="Center" HorizontalAlignment="Center" Click="convertLength_Click"  Margin="10"/>-->
             </Grid>
         </GroupBox>
         <GroupBox Header="Volume" DockPanel.Dock="Top" Margin="3">
@@ -106,7 +103,6 @@
                         </MultiBinding>
                     </TextBox.Text>
                 </TextBox>
-                <!--<Button x:Name="convertLength" Grid.Column="1" Grid.Row="2" Content="Convert" VerticalAlignment="Center" HorizontalAlignment="Center" Click="convertLength_Click"  Margin="10"/>-->
             </Grid>
         </GroupBox>
         <GroupBox Header="Temperature" DockPanel.Dock="Top" Margin="3">
@@ -119,12 +115,10 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="{Binding ElementName=widestColumn, Path=ActualWidth}" />
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <!--<Label Grid.Row="0" Grid.Column="0" Content="Fahrenheit:" VerticalContentAlignment="Center" HorizontalAlignment="Right" />
-                <Label Grid.Row="1" Grid.Column="0" Content="Celcius:" VerticalContentAlignment="Center" HorizontalAlignment="Right" />-->
                 <TextBox Grid.Row="0" Grid.Column="1" Name="txtFahrenheit" VerticalContentAlignment="Center" Margin="10" />
                 <Label Grid.Row="0" Grid.Column="2" Content="°F" VerticalAlignment="Center" />
                 <TextBox Grid.Row="1" Grid.Column="1" Name="txtCelcius" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Text, ElementName=txtFahrenheit, Converter={StaticResource tempConverter}}" VerticalContentAlignment="Center" Margin="10" />

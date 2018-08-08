@@ -50,10 +50,10 @@ namespace FracDecConversion
             parsedValue -= n;
 
             if(parsedValue < maxError)
-                return new Fraction(sign * n, 1).ToString();
+                return new FractionModel(sign * n, 1).ToString();
 
             if(1 - maxError < parsedValue)
-                return new Fraction(sign * (n + 1), 1).ToString();
+                return new FractionModel(sign * (n + 1), 1).ToString();
 
             int lowerNumerator = 0;
             int lowerDenominator = 1;
@@ -77,7 +77,7 @@ namespace FracDecConversion
                 }
                 else
                 {
-                    return new Fraction((n * middleDenominator + middleNumerator) * sign, middleDenominator).ToString();
+                    return new FractionModel((n * middleDenominator + middleNumerator) * sign, middleDenominator).ToString();
                 }
             }
 

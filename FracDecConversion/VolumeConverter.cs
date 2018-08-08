@@ -38,6 +38,7 @@ namespace FracDecConversion
             return null;
         }
 
+        #region Conversion Methods
         public double ConvertToLiter(string originUnit, double originVolume)
         {
             double result = 0.0;
@@ -154,6 +155,7 @@ namespace FracDecConversion
                     break;
             }
             return result;
-        }        
+        }
+        #endregion
     }
 }
