@@ -27,6 +27,8 @@ namespace FracDecConversion
         public MainWindow()
         {
             InitializeComponent();
+            //this.DataContext = new MeasurementViewModel();
+            //this.DataContext = new VolumeViewModel();
         }
 
         public Fraction FloatToFraction (double value, double accuracy)
@@ -43,14 +45,14 @@ namespace FracDecConversion
                 value = Math.Abs(value);
             }
 
-            double maxError = sign == 0 ? accuracy : value * accuracy;
+            //double maxError = sign == 0 ? accuracy : value * accuracy;
 
             //Possibly the standard if-then statement, need to TEST
-            //double maxError;
-            //if(sign == 0)
-            //    maxError = accuracy;
-            //else
-            //    maxError = (value * accuracy);
+            double maxError;
+            if(sign == 0)
+                maxError = accuracy;
+            else
+                maxError = (value * accuracy);
 
             int n = (int)Math.Floor(value);
             value -= n;
@@ -93,7 +95,7 @@ namespace FracDecConversion
             }
         }
 
-        public struct Fraction
+        public class Fraction
         {
             public Fraction(int numerator, int denominator)
             {
@@ -110,14 +112,30 @@ namespace FracDecConversion
             {
                 get; private set;
             }
-
+            
             public override string ToString()
             {
-                return Numerator.ToString() + "/" + Denominator.ToString();
+                int mixed = 0;
+
+                while (Numerator >= Denominator)
+                {
+                    mixed += 1;
+                    Numerator -= Denominator;
+                }
+
+                if (mixed != 0)
+                {
+                    if(Numerator == 0)
+                        return mixed.ToString();
+                    else
+                        return mixed.ToString() + " " + Numerator.ToString() + "/" + Denominator.ToString();
+                }                    
+                else
+                    return Numerator.ToString() + "/" + Denominator.ToString();
             }
         }
 
-        private void convert_Click(object sender, RoutedEventArgs e)
+        private void convertFraction_Click(object sender, RoutedEventArgs e)
         {
 
             try
@@ -151,11 +169,16 @@ namespace FracDecConversion
         }
 
         private void decimalEntry_KeyDown(object sender, KeyEventArgs e)
-        {
+        {            
             if (e.Key == Key.Enter)
             {
-                convert_Click(null, null);
+                convertFraction_Click(null, null);
             }
         }
+
+        private void convertLength_Click(object sender, RoutedEventArgs e)
+        {
+
+        }        
     }
 }
