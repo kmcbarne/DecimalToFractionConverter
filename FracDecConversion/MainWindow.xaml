@@ -5,18 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FracDecConversion"
         mc:Ignorable="d"
-        Title="Decimal → Fraction Converter" SizeToContent="WidthAndHeight">
+        Title="Measured Converter" SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <Style x:Key="LeftColumnStyle" TargetType="{x:Type ColumnDefinition}">
+            <Setter Property="Width" Value="135" />
+        </Style>
+    </Window.Resources>
     <DockPanel>
         <StatusBar x:Name="systemMessages" Height="25" DockPanel.Dock="Bottom">
-            <StatusBarItem x:Name="systemErrorMessages" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="Red" FontWeight="Bold" />
+            <StatusBarItem x:Name="systemErrorMessages" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="Red" FontWeight="Bold" />            
         </StatusBar>
         <GroupBox Header="Fractions" DockPanel.Dock="Top" Margin="3">
             <GroupBox.Resources>
-                <local:FractionConverter x:Key="fracConverter" />
+                <local:FractionConverter x:Key="fracConverter" />                
             </GroupBox.Resources>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
+                    <ColumnDefinition Style="{StaticResource LeftColumnStyle}"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -42,7 +47,7 @@
             </GroupBox.DataContext>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
+                    <ColumnDefinition Style="{StaticResource LeftColumnStyle}" />
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -78,7 +83,7 @@
             </GroupBox.DataContext>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
+                    <ColumnDefinition Style="{StaticResource LeftColumnStyle}" />
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -115,7 +120,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="{Binding ElementName=widestColumn, Path=ActualWidth}" />
+                    <ColumnDefinition Style="{StaticResource LeftColumnStyle}" />
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
@@ -123,6 +128,7 @@
                 <Label Grid.Row="0" Grid.Column="2" Content="°F" VerticalAlignment="Center" />
                 <TextBox Grid.Row="1" Grid.Column="1" Name="txtCelcius" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Text, ElementName=txtFahrenheit, Converter={StaticResource tempConverter}}" VerticalContentAlignment="Center" Margin="10" />
                 <Label Grid.Row="1" Grid.Column="2" Content="°C" VerticalAlignment="Center" />
+                <Image Grid.Column="2" Grid.Row="0" Source="Images\thermometer.png" Grid.RowSpan="2" Height="80" RenderOptions.BitmapScalingMode="HighQuality" />
             </Grid>
         </GroupBox>
     </DockPanel>
